@@ -4,9 +4,11 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../../environments/environment';
+import {environment} from "../environments/environment";
+import { EffectsModule } from '@ngrx/effects';
+import { RootStoreModule } from './root-store/root-store.module';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { environment } from '../../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
+    RootStoreModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
