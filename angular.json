@@ -61,7 +61,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "admin-express-brussel:build"
+            "browserTarget": "admin-express-brussel:build",
+            "port": 1337
           },
           "configurations": {
             "production": {
@@ -135,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "admin-express-brussel"
+  "defaultProject": "admin-express-brussel",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
