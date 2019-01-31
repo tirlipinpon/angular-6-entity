@@ -5,7 +5,7 @@ import {Injectable} from "@angular/core";
 import {Actions, Effect, ofType} from "@ngrx/effects";
 import {Action} from "@ngrx/store";
 import {Observable, of} from "rxjs";
-import * as clientsActions from '../actions/actionsLoad';
+import * as clientsActions from '../actions/actions';
 import {startWith, switchMap, map, catchError, tap} from "rxjs/internal/operators";
 import {ClientsServiceService} from "../../services/clients-service.service";
 

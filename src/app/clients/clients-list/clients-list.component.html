@@ -1,6 +1,23 @@
 <p>
   clients-list works!
 </p>
+<button (click)="addOne()">add one</button>
+
+<div>
+  <input #inputIdRemove>
+  <button (click)="removeOne(inputIdRemove.value)">remove by id</button>
+</div>
+<div>
+  <input #inputIdUpdate>
+  <button (click)="updateOne(inputIdUpdate.value)">update by id</button>
+</div>
+<div>
+  <input #inputIdUpsert>
+  <button (click)="upsertOne(inputIdUpsert.value)">upsert</button>
+</div>
+
+
+
 <div style="display:flex;">
   <pre style="flex:1;">clientsItems$ : {{clientsItems$|async|json}}</pre>
   <pre style="flex:1;">error$: {{error$|async}}</pre>
