@@ -15,7 +15,9 @@ import {
 })
 export class ClientsListComponent implements OnInit {
   clientsItems$: Observable<DataForm[]>;
+  clientsById$: Observable<any>;
   error$: Observable<string>;
+  selectTotal$: Observable<number>;
   isLoading$: Observable<boolean>;
   private cpt: number;
 
@@ -35,7 +37,18 @@ export class ClientsListComponent implements OnInit {
       ClientsStoreSelectors.selectClientsIsLoading
     );
 
+    this.selectTotal$ = this.store$.select(
+      ClientsStoreSelectors.selectTotal
+    );
+
     this.store$.dispatch( new ClientsStoreActions.LoadRequestAction({id: 1}) );
+
+  }
+
+  selectById(id: string) {
+    this.clientsById$ = this.store$.select(
+      ClientsStoreSelectors.selectClientById(+id)
+    );
   }
 
   removeOne(id: string): void {

@@ -15,13 +15,18 @@
   <input #inputIdUpsert>
   <button (click)="upsertOne(inputIdUpsert.value)">upsert</button>
 </div>
-
+<div>
+  <input #inputIdSelectById>
+  <button (click)="selectById(inputIdSelectById.value)">select by id</button>
+</div>
 
 
 <div style="display:flex;">
   <pre style="flex:1;">clientsItems$ : {{clientsItems$|async|json}}</pre>
-  <pre style="flex:1;">error$: {{error$|async}}</pre>
+  <pre style="flex:1;">selectTotal$ : {{selectTotal$|async}}</pre>
+  <pre style="flex:1;">clientsById$ : {{clientsById$|async|json}}</pre>
   <pre style="flex:1;">isLoading$: {{isLoading$|async}}</pre>
+  <!--<pre style="flex:1;">error$: {{error$|async}}</pre>-->
 </div>
 
 

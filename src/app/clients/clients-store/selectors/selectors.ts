@@ -11,15 +11,18 @@ export const getIsLoading = (state: ClientsState): boolean => state.isLoading;
 export const selectClientsState: MemoizedSelector<object,ClientsState> = createFeatureSelector<ClientsState>('clients');
 
 export const selectAllClientsItems: (state: object) => DataForm[] = clientsAdapter.getSelectors(selectClientsState).selectAll;
+export const selectTotal: (state: object) => number = clientsAdapter.getSelectors(selectClientsState).selectTotal;
 
-export const selectClientById = (id: string) =>
-  createSelector(this.selectAllClientsItems,(allClients: DataForm[]) => {
-  if (allClients) {
-    return allClients.find(p => p.id === id);
-  }else {
-    return null
-  }
-});
+export const selectClientById = (id: number) =>
+  createSelector(
+    selectAllClientsItems,
+    (allMyFeatures: DataForm[]) => {
+      if (allMyFeatures) {
+        return allMyFeatures.find(p => p.id === id);
+      } else {
+        return null;
+      }
+    });
 
 export const selectClientsError: MemoizedSelector<object, any> =
   createSelector (
