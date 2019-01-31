@@ -50,6 +50,19 @@ export function clientsReducer(state = initalClientsState, action: Actions): Cli
         }
       )
     }
+    case ClientsActionTypes.UPDATE_REQUEST: {
+      return clientsAdapter.updateOne({
+        id: action.payload.id,
+        changes: action.payload.changes
+        },
+        {
+          ...state,
+          isLoading: false,
+          error: null
+        }
+
+      )
+    }
     case ClientsActionTypes.UPSERT_REQUEST: {
       return clientsAdapter.upsertOne(
         action.payload.item,

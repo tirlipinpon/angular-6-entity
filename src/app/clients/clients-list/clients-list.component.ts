@@ -7,7 +7,6 @@ import {
   ClientsStoreActions,
   ClientsStoreSelectors
 } from '../../root-store';
-import {DUMMY_CLIENTS, DUMMY_CLIENT} from "../DUMMY";
 
 @Component({
   selector: 'app-clients-list',
