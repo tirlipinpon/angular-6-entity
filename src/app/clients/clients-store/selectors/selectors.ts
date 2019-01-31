@@ -18,7 +18,18 @@ export const selectClientById = (id: number) =>
     selectAllClientsItems,
     (allMyFeatures: DataForm[]) => {
       if (allMyFeatures) {
-        return allMyFeatures.find(p => p.id === id);
+        return allMyFeatures.find(p => +p.id === id);
+      } else {
+        return null;
+      }
+    });
+
+export const selectClientByName = (name: string) =>
+  createSelector(
+    selectAllClientsItems,
+    (allMyFeatures: DataForm[]) => {
+      if (allMyFeatures) {
+        return allMyFeatures.find(p => p.name.toLowerCase() === name.toLowerCase());
       } else {
         return null;
       }

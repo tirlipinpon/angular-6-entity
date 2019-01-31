@@ -15,7 +15,8 @@ import {
 })
 export class ClientsListComponent implements OnInit {
   clientsItems$: Observable<DataForm[]>;
-  clientsById$: Observable<any>;
+  clientsById$: Observable<DataForm>;
+  clientsByName$: Observable<DataForm>;
   error$: Observable<string>;
   selectTotal$: Observable<number>;
   isLoading$: Observable<boolean>;
@@ -50,6 +51,13 @@ export class ClientsListComponent implements OnInit {
       ClientsStoreSelectors.selectClientById(+id)
     );
   }
+
+  selectByName(name: string) {
+    this.clientsByName$ = this.store$.select(
+      ClientsStoreSelectors.selectClientByName(name)
+    );
+  }
+
 
   removeOne(id: string): void {
     this.store$.dispatch( new ClientsStoreActions.RemoveRequestAction(id) );

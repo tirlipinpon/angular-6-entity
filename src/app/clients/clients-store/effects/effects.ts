@@ -19,12 +19,11 @@ export class ClientsStoreEffects {
     ofType<clientsActions.LoadRequestAction>(
       clientsActions.ClientsActionTypes.LOAD_REQUEST
     ),
-    tap(data => console.log(data)),
-    // startWith(new clientsActions.LoadRequestAction({id: 1})),
     switchMap(action =>
       this.dataService
         .getItems(action.payload.id)
         .pipe(
+          map(result => result.data),
           map(
             items =>
               new clientsActions.LoadSuccessAction({

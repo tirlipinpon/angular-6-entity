@@ -22,3 +22,8 @@ export interface DataForm {
   created: any;
   fk_type: number;
 }
+
+export interface DataDataFormState {
+  data: DataForm[];
+  count: number;
+}

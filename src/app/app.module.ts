@@ -8,6 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {environment} from "../environments/environment";
 import { EffectsModule } from '@ngrx/effects';
 import { RootStoreModule } from './root-store/root-store.module';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { RootStoreModule } from './root-store/root-store.module';
     BrowserModule,
     AppRoutingModule,
     RootStoreModule,
+    HttpClientModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : []
