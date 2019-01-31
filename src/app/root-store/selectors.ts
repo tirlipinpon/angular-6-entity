@@ -8,12 +8,14 @@ import {
 } from '../clients/clients-store';
 
 
-export const selectError: MemoizedSelector<object, string> = createSelector(
-  ClientsStoreSelectors.selectClientsError,
-  (clientsError: string) => { return clientsError; }
-);
+export const selectError: MemoizedSelector<object, string> =
+  createSelector (
+    ClientsStoreSelectors.selectClientsError,
+    (clientsError: string) => { return clientsError; }
+  );
 
-export const selectIsLoading: MemoizedSelector<object, boolean> = createSelector(
-  ClientsStoreSelectors.selectClientsIsLoading,
-  (clientsIsSelect: boolean) => {  return clientsIsSelect; }
-);
+export const selectIsLoading: MemoizedSelector<object, boolean> =
+  createSelector (
+    ClientsStoreSelectors.selectClientsIsLoading,
+    (clientsIsSelect: boolean) => {  return clientsIsSelect; }
+  );

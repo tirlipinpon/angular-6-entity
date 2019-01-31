@@ -1,5 +1,5 @@
 import { ClientsStoreState } from '../clients/clients-store';
 
 export interface State {
-  clients: ClientsStoreState.State;
+  clients: ClientsStoreState.ClientsState;
 }

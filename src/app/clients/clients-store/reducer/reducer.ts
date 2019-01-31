@@ -1,26 +1,33 @@
-import {Actions, ActionTypes} from "../actions/actions";
-import {initalState, State, clientsAdapter} from "../state/state";
-
 /**
  * Created by tirli on 30-01-19.
  */
-export function clientsReducer(state = initalState, action: Actions): State {
+import {Actions, ClientsActionTypes} from "../actions/actionsLoad";
+import {initalClientsState, ClientsState, clientsAdapter} from "../state/state";
+
+export function clientsReducer(state = initalClientsState, action: Actions): ClientsState {
   switch (action.type) {
-    case ActionTypes.LOAD_REQUEST: {
-      return {
-        ...state,
-        isLoading: true,
-        error: null
-      };
-    }
-    case ActionTypes.LOAD_SUCCESS: {
+    // case ClientsActionTypes.LOAD_REQUEST: {
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //     error: null
+    //   };
+    // }
+    case ClientsActionTypes.LOAD_SUCCESS: {
       return clientsAdapter.addAll(action.payload.items, {
         ...state,
-        loading: false,
+        isLoading: false,
         error: null
       })
     }
-    case ActionTypes.LOAD_FAILURE: {
+    case ClientsActionTypes.LOAD_SUCCESS: {
+      return clientsAdapter.addAll(action.payload.items, {
+        ...state,
+        isLoading: false,
+        error: null
+      })
+    }
+    case ClientsActionTypes.LOAD_FAILURE: {
       return {
         ...state,
         isLoading: false,

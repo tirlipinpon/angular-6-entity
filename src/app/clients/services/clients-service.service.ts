@@ -10,7 +10,7 @@ export class ClientsServiceService {
 
   constructor() { }
 
-  getItems(): Observable<DataForm[]> {
+  getItems(id: number): Observable<DataForm[]> {
     return of(DUMMY_CLIENTS);
   }
 }

@@ -5,8 +5,8 @@ import {Injectable} from "@angular/core";
 import {Actions, Effect, ofType} from "@ngrx/effects";
 import {Action} from "@ngrx/store";
 import {Observable, of} from "rxjs";
-import * as clientsActions from '../actions/actions';
-import {startWith, switchMap, map, catchError} from "rxjs/internal/operators";
+import * as clientsActions from '../actions/actionsLoad';
+import {startWith, switchMap, map, catchError, tap} from "rxjs/internal/operators";
 import {ClientsServiceService} from "../../services/clients-service.service";
 
 @Injectable()
@@ -15,14 +15,15 @@ export class ClientsStoreEffects {
   constructor(private dataService: ClientsServiceService, private actions$: Actions) {}
 
   @Effect()
-  loadRequestEffect$ = this.actions$.pipe(
+  loadRequestEffect$: Observable<Action> = this.actions$.pipe(
     ofType<clientsActions.LoadRequestAction>(
-      clientsActions.ActionTypes.LOAD_REQUEST
+      clientsActions.ClientsActionTypes.LOAD_REQUEST
     ),
-    startWith(new clientsActions.LoadRequestAction({id: 1})),
+    tap(data => console.log(data)),
+    // startWith(new clientsActions.LoadRequestAction({id: 1})),
     switchMap(action =>
       this.dataService
-        .getItems()
+        .getItems(action.payload.id)
         .pipe(
           map(
             items =>

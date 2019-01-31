@@ -33,9 +33,7 @@ export class ClientsListComponent implements OnInit {
       ClientsStoreSelectors.selectClientsIsLoading
     );
 
-    this.store$.dispatch(
-      new ClientsStoreActions.LoadRequestAction({id: 1})
-    );
+    this.store$.dispatch( new ClientsStoreActions.LoadRequestAction({id: 1}) );
   }
 
 }
