@@ -17,7 +17,7 @@ export class ClientsServiceService {
 
   getItems(id: number): Observable<DataDataFormState> {
     // return of(DUMMY_CLIENTS);
-    let url = this.apiUrl+'php//read.php?fk_type='+id+''+2;
+    let url = this.apiUrl+'php//read_all_dataform.php';
     return  this.http.get<DataDataFormState>(url);
   }
 }

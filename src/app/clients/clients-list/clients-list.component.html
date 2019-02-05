@@ -15,7 +15,7 @@
 </div>
 <div>
   <input #inputIdSelectById>
-  <button (click)="selectById(inputIdSelectById.value)">select by id</button>
+  <button (click)="selectClientById(inputIdSelectById.value)">select by id</button>
 </div>
 <div>
   <input #inputIdSelectByName>
@@ -23,9 +23,10 @@
 </div>
 
 <div style="display:flex;">
+  <pre style="flex:1;border:1px solid grey;">allItems$ : {{allItems$|async|json}}</pre>
   <pre style="flex:1;border:1px solid grey;">clientsItems$ : {{clientsItems$|async|json}}</pre>
   <pre style="flex:1;border:1px solid grey;">clientsById$ : {{clientsById$|async|json}}</pre>
-  <pre style="flex:1;border:1px solid grey;">clientsByName$ : {{clientsByName$|async|json}}</pre>
+  <pre style="flex:1;border:1px solid grey;">removalsByClientId$ : {{removalsByClientId$|async|json}}</pre>
   <pre style="flex:1;border:1px solid grey;">isLoading$: {{isLoading$|async}}</pre>
   <pre style="flex:1;border:1px solid grey;">selectTotal$ : {{selectTotal$|async}}</pre>
   <!--<pre style="flex:1;">error$: {{error$|async}}</pre>-->

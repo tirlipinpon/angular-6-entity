@@ -14,9 +14,11 @@ import {
   styleUrls: ['./clients-list.component.scss']
 })
 export class ClientsListComponent implements OnInit {
+  allItems$: Observable<DataForm[]>;
   clientsItems$: Observable<DataForm[]>;
   clientsById$: Observable<DataForm>;
   clientsByName$: Observable<DataForm>;
+  removalsByClientId$: Observable<DataForm[]>;
   error$: Observable<string>;
   selectTotal$: Observable<number>;
   isLoading$: Observable<boolean>;
@@ -26,8 +28,12 @@ export class ClientsListComponent implements OnInit {
 
   ngOnInit() {
     this.cpt = 3;
+    this.allItems$ = this.store$.select(
+      ClientsStoreSelectors.selectAllItems
+    );
+
     this.clientsItems$ = this.store$.select(
-      ClientsStoreSelectors.selectAllClientsItems
+      ClientsStoreSelectors.selectClientsItems
     );
 
     this.error$ = this.store$.select(
@@ -46,9 +52,16 @@ export class ClientsListComponent implements OnInit {
 
   }
 
-  selectById(id: string) {
+  selectClientById(id: string) {
     this.clientsById$ = this.store$.select(
       ClientsStoreSelectors.selectClientById(+id)
+    );
+    this.selectRemovalsByClientId(id);
+  }
+
+  selectRemovalsByClientId(id: string) {
+    this.removalsByClientId$ = this.store$.select(
+      ClientsStoreSelectors.selectRemovalsByClientId(+id)
     );
   }
 
